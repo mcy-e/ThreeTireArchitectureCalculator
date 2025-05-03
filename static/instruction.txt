@@ -1,5 +1,0 @@
-*This folder is for:
-
-
-Static files (optional CSS, JS)
-Custom styles (if needed)
