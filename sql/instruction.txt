@@ -1,0 +1,4 @@
+*This folder is for:
+
+SQL scripts for database setup
+SQL for DB and table creation
