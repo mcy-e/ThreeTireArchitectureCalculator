@@ -54,9 +54,9 @@ If your feature needs new tests, add them in the appropriate test file/folder.
 Before pushing, make sure your branch is up to date with the upstream repository:
 
 ```bash
-git remote add upstream https://github.com/ORIGINAL_OWNER/REPO.git
+git remote add upstream https://github.com/mcy-e/ThreeTireArchitectureCalculator.git
 git fetch upstream
-git merge upstream/main
+git merge upstream/MainBranch
 ```
 
 ---
