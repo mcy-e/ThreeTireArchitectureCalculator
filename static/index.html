@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Calculator</title>
+    <title>THE CALCULATOR</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,77 +14,91 @@
             <button id="basicModeBtn" class="mode-btn active" onclick="switchMode('basic')">Basic</button>
             <button id="scientificModeBtn" class="mode-btn" onclick="switchMode('scientific')">Scientific</button>
         </div>
+        <div class="clear-group">
+            <button onclick="clearDisplay()" class="opbtn">C</button>
+            <button onclick="backspace()" class="backspace-btn">⌫</button>
+
+        </div>
 
         <div id="basicKeys" class="keys-container active">
-            <div id="keys">
-                <button onclick="appendToDisplay('+')" class="opbtn">+</button>
+            <div class="button-grid">
                 <button onclick="appendToDisplay('7')">7</button>
                 <button onclick="appendToDisplay('8')">8</button>
                 <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('-')" class="opbtn">-</button>
+                <button onclick="appendToDisplay('+')" class="opbtn">+</button>
+                
                 <button onclick="appendToDisplay('4')">4</button>
                 <button onclick="appendToDisplay('5')">5</button>
                 <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('*') " class="opbtn">*</button>
+                <button onclick="appendToDisplay('-')" class="opbtn">-</button>
+                
                 <button onclick="appendToDisplay('1')">1</button>
                 <button onclick="appendToDisplay('2')">2</button>
                 <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('/')" class="opbtn">/</button>
+                <button onclick="appendToDisplay('*')" class="opbtn">×</button>
+                
                 <button onclick="appendToDisplay('0')">0</button>
                 <button onclick="appendToDisplay('.')">.</button>
-                <button onclick="calculate()">=</button>
-                <button onclick="clearDisplay()" class="opbtn">C</button>
+                <button onclick="appendToDisplay('/')" class="opbtn" style="grid-column: span 2;">÷</button>
+                
+                <button onclick="calculate()" id="equalsBtn" style="grid-column: span 4;">=</button>
             </div>
         </div>
 
         <div id="scientificKeys" class="keys-container">
-            <div id="scientific-vars">
-                <button onclick="appendToDisplay('x')" class="var-btn">x</button>
-                <button onclick="appendToDisplay('(')" class="var-btn">(</button>
-                <button onclick="appendToDisplay(')')" class="var-btn">)</button>
-                <button onclick="appendToDisplay('**')" class="var-btn">x<sup>y</sup></button>
+            <div class="scientific-sections">
+                <div class="scientific-row">
+                    <button onclick="appendToDisplay('x')" class="var-btn">x</button>
+                    <button onclick="appendToDisplay('(')" class="var-btn">(</button>
+                    <button onclick="appendToDisplay(')')" class="var-btn">)</button>
+                    <button onclick="appendToDisplay('**')" class="var-btn">x^y</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button onclick="calculateSimpleFunction('sqrt')" class="func-btn">√</button>
+                    <button onclick="calculateSimpleFunction('sin')" class="func-btn">sin</button>
+                    <button onclick="calculateSimpleFunction('cos')" class="func-btn">cos</button>
+                    <button onclick="calculateSimpleFunction('tan')" class="func-btn">tan</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button onclick="calculateSimpleFunction('log')" class="func-btn">log</button>
+                    <button onclick="calculateSimpleFunction('ln')" class="func-btn">ln</button>
+                    <button onclick="appendToDisplay('pi')" class="func-btn">π</button>
+                    <button onclick="appendToDisplay('e')" class="func-btn">e</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button onclick="showLimitInput()" class="sci-btn">lim</button>
+                    <button onclick="calculateScientific('derivative')" class="sci-btn">d/dx</button>
+                    <button onclick="calculateScientific('integral')" class="sci-btn">∫</button>
+                    <button onclick="calculateScientific('solve')" class="sci-btn">eq</button>
+                </div>
             </div>
             
-            <div id="scientific-funcs">
-                <button onclick="calculateSimpleFunction('sqrt')" class="func-btn">√</button>
-                <button onclick="calculateSimpleFunction('sin')" class="func-btn">sin</button>
-                <button onclick="calculateSimpleFunction('cos')" class="func-btn">cos</button>
-                <button onclick="calculateSimpleFunction('tan')" class="func-btn">tan</button>
-                <button onclick="calculateSimpleFunction('log')" class="func-btn">log</button>
-                <button onclick="calculateSimpleFunction('ln')" class="func-btn">ln</button>
-                <button onclick="appendToDisplay('pi')" class="func-btn">π</button>
-                <button onclick="appendToDisplay('e')" class="func-btn">e</button>
-            </div>
-            
-            <div id="scientific-ops">
-                <button onclick="showLimitInput()" class="sci-btn">lim</button>
-                <button onclick="calculateScientific('derivative')" class="sci-btn">∂/∂x</button>
-                <button onclick="calculateScientific('integral')" class="sci-btn">∫</button>
-                <button onclick="calculateScientific('solve')" class="sci-btn">eq</button>
-            </div>
-            
-            <div id="keys-sci">
-                <button onclick="appendToDisplay('+')" class="opbtn">+</button>
+            <div class="button-grid">
                 <button onclick="appendToDisplay('7')">7</button>
                 <button onclick="appendToDisplay('8')">8</button>
                 <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('-')" class="opbtn">-</button>
+                <button onclick="appendToDisplay('+')" class="opbtn">+</button>
+                
                 <button onclick="appendToDisplay('4')">4</button>
                 <button onclick="appendToDisplay('5')">5</button>
                 <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('*') " class="opbtn">*</button>
+                <button onclick="appendToDisplay('-')" class="opbtn">-</button>
+                
                 <button onclick="appendToDisplay('1')">1</button>
                 <button onclick="appendToDisplay('2')">2</button>
                 <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('/')" class="opbtn">/</button>
+                <button onclick="appendToDisplay('*')" class="opbtn">×</button>
+               
                 <button onclick="appendToDisplay('0')">0</button>
                 <button onclick="appendToDisplay('.')">.</button>
-                <button onclick="calculate()">=</button>
-                <button onclick="clearDisplay()" class="opbtn">C</button>
-            </div>
+                <button onclick="appendToDisplay('=')" >=</button>
+                <button onclick="appendToDisplay('/')" class="opbtn">÷</button>
+                
         </div>
         
-        <!-- Modal for limit input -->
         <div id="limitModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>

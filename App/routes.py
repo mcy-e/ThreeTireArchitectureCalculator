@@ -2,7 +2,7 @@
 from flask import Blueprint, request, jsonify
 from .calculator import *
 
-bp = Blueprint('main', __name__)
+bp = Blueprint('main', __name__, url_prefix='/api')
 
 @bp.route('/calculate', methods=['POST'])
 def calculate():
