@@ -19,3 +19,9 @@ def solve_equation(equation_str):
     eq = Eq(sympify(left), sympify(right))#*make it symbolic equation
     solutions = solve(eq, x)
     return [str(sol) for sol in solutions]#*for more then one solution
+def apply_function(expr_str):
+    try:
+        expr = sympify(expr_str)
+        return str(expr)
+    except Exception as e:
+        return f"Error: {str(e)}"

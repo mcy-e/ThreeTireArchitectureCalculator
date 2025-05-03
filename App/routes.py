@@ -1,6 +1,6 @@
 # app/routes.py
 from flask import Blueprint, request, jsonify
-from .calculator import calculate_derivative, calculate_integral, solve_equation, calculate_limit
+from .calculator import *
 
 bp = Blueprint('main', __name__)
 
@@ -20,6 +20,8 @@ def calculate():
             result = calculate_limit(expr, float(x_val))
         elif operation == 'solve':
             result = solve_equation(expr)
+        elif operation =='function' :
+            result = apply_function(expr)
         else:
             return jsonify({'error': 'Invalid operation'}), 400
 
