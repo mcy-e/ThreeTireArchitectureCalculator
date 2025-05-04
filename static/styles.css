@@ -10,6 +10,193 @@ body {
     box-sizing: border-box;
 }
 
+/* Authentication styles */
+#auth-container {
+    width: 350px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.auth-form {
+    padding: 25px;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: hsl(43, 100%, 50%);
+    outline: none;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: hsl(43, 100%, 50%);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    height: auto;
+}
+
+.auth-form button:hover {
+    background-color: hsl(43, 100%, 45%);
+    transform: none;
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+.auth-form a {
+    color: hsl(200, 70%, 50%);
+    text-decoration: none;
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #d32f2f;
+}
+
+.message.success {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #388e3c;
+}
+
+/* User panel styles */
+#user-panel {
+    background-color: hsl(0, 0%, 12%);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+}
+
+#welcome-message {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#logout-btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: auto;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+#logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: none;
+}
+
+/* History panel styles */
+#history-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    color: white;
+    z-index: 10;
+}
+
+#history-panel h3 {
+    text-align: center;
+    margin-top: 0;
+    color: hsl(43, 100%, 50%);
+    margin-bottom: 15px;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#history-list li {
+    padding: 10px;
+    border-bottom: 1px solid hsl(0, 0%, 25%);
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#history-list li:hover {
+    background-color: hsl(0, 0%, 20%);
+}
+
+.close-history {
+    margin-top: 15px;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    background-color: hsl(0, 0%, 25%);
+}
+
+.hidden {
+    display: none !important;
+}
+
 #Calculator {
     background-color: hsl(0, 0%, 15%);
     border-radius: 20px;
@@ -98,7 +285,7 @@ button {
     font-size: 1.4rem;
     cursor: pointer;
     color: aliceblue;
-    transcfition: all 0.15s;
+    transition: all 0.15s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +326,7 @@ button:active {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-   grid-column: span 4;
+    grid-column: span 4;
 }
 
 .backspace-btn {
@@ -227,7 +414,12 @@ button:active {
     .var-btn {
         font-size: 1rem;
     }
+    
+    #auth-container {
+        width: 320px;
+    }
 }
+
 @media (min-width: 600px) {
     #Calculator.scientific-mode {
         width: 600px;
