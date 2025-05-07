@@ -1,7 +1,7 @@
 from .db import add_calculation_to_history
 from flask import Blueprint, request, jsonify, session
 from .authentication import login_required
-
+from .calculator import calculate_derivative,calculate_integral,calculate_limit,solve_equation,apply_function
 bp = Blueprint('routes', __name__)
 
 @bp.route('/calculate', methods=['POST'])
