@@ -4,7 +4,7 @@ from .authentication import login_required
 from .calculator import calculate_derivative,calculate_integral,calculate_limit,solve_equation,apply_function
 bp = Blueprint('routes', __name__)
 
-@bp.route('/calculate', methods=['POST'])
+@bp.route('/api/calculate', methods=['POST'])
 @login_required
 def calculate():
     data = request.get_json()
