@@ -1,25 +1,41 @@
 import mysql.connector
+import time
 
 # Database connection configuration
 db_config = {
-    'host': 'localhost',       # Replace with your DB host
-    'user': 'your_username',   # Replace with your DB username
-    'password': 'your_password', # Replace with your DB password
-    'database': 'your_database'  # Replace with your DB name
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'your_real_mysql_password',
+    'database': 'calculator_db'
 }
+
 
 # Establish the database connection
 conn = mysql.connector.connect(**db_config)
 cursor = conn.cursor(dictionary=True)
 
-# Query for all users
-cursor.execute("SELECT username, password FROM users ORDER BY username ASC")
-all_users = cursor.fetchall()
+# Initialize the last seen user ID
+last_seen_id = 0
 
-# Display all users
-print("Users currently in the database:")
-for user in all_users:
-    print(f"Username: {user['username']}, Password: {user['password']}")
+print("Monitoring new users...\n")
 
-cursor.close()
-conn.close()
+try:
+    while True:
+        # Query for new users
+        cursor.execute("SELECT * FROM users WHERE id > %s ORDER BY id ASC", (last_seen_id,))
+        new_users = cursor.fetchall()
+        
+        # Display new users
+        for user in new_users:
+            print(f"New user added: {user}")
+            last_seen_id = max(last_seen_id, user['id'])
+        
+        # Wait before the next check
+        time.sleep(2)  # Check every 2 seconds
+
+except KeyboardInterrupt:
+    print("Monitoring stopped by user.")
+
+finally:
+    cursor.close()
+    conn.close()
