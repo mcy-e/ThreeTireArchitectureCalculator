@@ -14,6 +14,8 @@ def create_app():
     app.config['SESSION_PERMANENT'] = False
     app.config['PERMANENT_SESSION_LIFETIME'] = 1800  
     
+    init_db()
+
     #* Register blueprints
     app.register_blueprint(bp)
     app.register_blueprint(auth_bp)
