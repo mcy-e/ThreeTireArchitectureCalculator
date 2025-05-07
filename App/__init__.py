@@ -4,7 +4,7 @@ from .authentication import auth_bp
 import os
 import secrets
 from config import Config
-import db
+from .db import init_db
 
 def create_app():
     app = Flask(__name__, static_folder='../static')
