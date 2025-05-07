@@ -43,3 +43,10 @@ def get_history():
     user_id = session.get('user_id')
     history = get_user_history(user_id)
     return jsonify({"history": history})
+
+@auth_bp.route('/logout', methods=['POST'])
+@login_required
+def logout():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return jsonify({"success": True, "message": "Logged out successfully"})
