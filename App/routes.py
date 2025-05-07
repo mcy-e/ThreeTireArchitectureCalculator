@@ -1,9 +1,8 @@
-# app/routes.py
+from .db import add_calculation_to_history
 from flask import Blueprint, request, jsonify, session
-from .calculator import *
-from .authentication import login_required, add_to_history
+from .authentication import login_required
 
-bp = Blueprint('main', __name__, url_prefix='/api')
+bp = Blueprint('routes', __name__)
 
 @bp.route('/calculate', methods=['POST'])
 @login_required
@@ -12,6 +11,7 @@ def calculate():
     expr = data.get('expression')
     operation = data.get('operation')
     username = session.get('username')
+    user_id = session.get('user_id')  # Get user_id from session
 
     try:
         result = None
@@ -30,8 +30,8 @@ def calculate():
         else:
             return jsonify({'error': 'Invalid operation'}), 400
 
-        # Add to user history
-        add_to_history(username, operation, expr, result)
+        # Add to user history using database function
+        add_calculation_to_history(user_id, operation, expr, str(result))
         
         return jsonify({'result': result})
     except Exception as e:
