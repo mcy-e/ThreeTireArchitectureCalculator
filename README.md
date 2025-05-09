@@ -24,7 +24,6 @@ A full-stack web application featuring a scientific calculator with user authent
 
 ## Architecture
 
-<div style="width:100%; overflow:auto">
 ```mermaid
 graph TD
     A["🌐 Browser/Client (Frontend)"] -->|"📨 HTTP Requests<br>JSON API Calls"| B["🛠️ Flask Server (Backend)"]
@@ -59,7 +58,7 @@ graph TD
     class B back
     class C db
 
-</div> ```
+```
 
 ## Screenshots
 
@@ -152,7 +151,7 @@ graph LR
 ```
 
 ## Database Schema
-<div style="width:100%; overflow:auto">
+
 ```mermaid
 erDiagram
     USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
@@ -170,7 +169,7 @@ erDiagram
         string result
         timestamp created_at
     }
-</div> ```
+```
 
 ## API Endpoints
 
