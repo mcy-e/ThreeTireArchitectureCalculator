@@ -79,7 +79,6 @@ graph TD
 
 ## Project Structure
 
-<div style="width:100%; overflow:auto">
 ```mermaid
 graph LR
     %% Root Level
@@ -117,7 +116,7 @@ graph LR
     style ROOT fill:#7B1FA2,stroke:#4A148C,color:#FFFFFF,stroke-width:2px
     style App,static,sql,test fill:#1976D2,stroke:#0D47A1,color:#FFFFFF
     style pycache fill:#9575CD,stroke:#7E57C2,color:#FFFFFF
-    
+
     %% File Styles
     style init,html,js,css,tables,auth,calc,db,routes,testcon fill:#E3F2FD,stroke:#90CAF9,color:#0D47A1
     style config.py,run.py,CONTRIBUTING.md,README.md,report.md,requirements.txt fill:#E8F5E9,stroke:#C8E6C9,color:#2E7D32
