@@ -42,22 +42,21 @@ graph TD
         C
     end
     
-    %% Styling
-    style Frontend fill:#E3F2FD,stroke:#90CAF9,stroke-width:2px,color:#1565C0
-    style Backend fill:#E8F5E9,stroke:#C8E6C9,stroke-width:2px,color:#2E7D32
-    style Database fill:#F3E5F5,stroke:#CE93D8,stroke-width:2px,color:#7B1FA2
-    style A fill:#BBDEFB,stroke:#64B5F6
-    style B fill:#C8E6C9,stroke:#81C784
-    style C fill:#E1BEE7,stroke:#BA68C8
+    %% Styling with black text
+    style Frontend fill:#E3F2FD,stroke:#90CAF9,stroke-width:2px,color:#000000
+    style Backend fill:#E8F5E9,stroke:#C8E6C9,stroke-width:2px,color:#000000
+    style Database fill:#F3E5F5,stroke:#CE93D8,stroke-width:2px,color:#000000
+    style A fill:#BBDEFB,stroke:#64B5F6,color:#000000
+    style B fill:#C8E6C9,stroke:#81C784,color:#000000
+    style C fill:#E1BEE7,stroke:#BA68C8,color:#000000
     
     %% Graph settings
-    classDef front fill:#BBDEFB,stroke:#64B5F6
-    classDef back fill:#C8E6C9,stroke:#81C784
-    classDef db fill:#E1BEE7,stroke:#BA68C8
+    classDef front fill:#BBDEFB,stroke:#64B5F6,color:#000000
+    classDef back fill:#C8E6C9,stroke:#81C784,color:#000000
+    classDef db fill:#E1BEE7,stroke:#BA68C8,color:#000000
     class A front
     class B back
     class C db
-
 ```
 
 ## Screenshots
@@ -154,7 +153,6 @@ graph LR
 
 ```mermaid
 erDiagram
-    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
     USERS {
         int id PK
         string username
@@ -169,6 +167,7 @@ erDiagram
         string result
         timestamp created_at
     }
+    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
 ```
 
 ## API Endpoints
