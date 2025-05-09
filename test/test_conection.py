@@ -9,7 +9,7 @@ try:
         password=Config.DB_PASSWORD,
         port=Config.DB_PORT
     )
-    print("✅ Successfully connected to the database!")
+    print(" Successfully connected to the database!")
     conn.close()
 except Exception as e:
-    print(f"❌ Connection failed: {e}")
+    print(f" Connection failed: {e}")

@@ -4,3 +4,4 @@ __pycache__/
 ignore
 app.db
 flask_session
+report.md
