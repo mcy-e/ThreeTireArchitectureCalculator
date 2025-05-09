@@ -24,22 +24,42 @@ A full-stack web application featuring a scientific calculator with user authent
 
 ## Architecture
 
+<div style="width:100%; overflow:auto">
 ```mermaid
 graph TD
-    A[Browser/Client] -->|HTTP Requests| B[Flask Server]
-    B -->|Authentication| C[(PostgreSQL Database)]
-    B -->|Calculator Modules| C
-    subgraph Frontend
-    A
+    A["🌐 Browser/Client (Frontend)"] -->|"📨 HTTP Requests<br>JSON API Calls"| B["🛠️ Flask Server (Backend)"]
+    B -->|"🔐 Authentication<br>JWT Validation"| C["🗃️ PostgreSQL Database"]
+    B -->|"🧮 Calculation Logic<br>SymPy Processing"| C
+    
+    subgraph Frontend[" "]
+        A
     end
-    subgraph Backend
-    B
+    
+    subgraph Backend[" "]
+        B
     end
-    subgraph Database
-    C
+    
+    subgraph Database[" "]
+        C
     end
+    
+    %% Styling
+    style Frontend fill:#E3F2FD,stroke:#90CAF9,stroke-width:2px,color:#1565C0
+    style Backend fill:#E8F5E9,stroke:#C8E6C9,stroke-width:2px,color:#2E7D32
+    style Database fill:#F3E5F5,stroke:#CE93D8,stroke-width:2px,color:#7B1FA2
+    style A fill:#BBDEFB,stroke:#64B5F6
+    style B fill:#C8E6C9,stroke:#81C784
+    style C fill:#E1BEE7,stroke:#BA68C8
+    
+    %% Graph settings
+    classDef front fill:#BBDEFB,stroke:#64B5F6
+    classDef back fill:#C8E6C9,stroke:#81C784
+    classDef db fill:#E1BEE7,stroke:#BA68C8
+    class A front
+    class B back
+    class C db
 
-```
+</div> ```
 
 ## Screenshots
 
@@ -132,9 +152,9 @@ graph LR
 ```
 
 ## Database Schema
-
+<div style="width:100%; overflow:auto">
 ```mermaid
-uerDiagram
+erDiagram
     USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
     USERS {
         int id PK
@@ -150,7 +170,7 @@ uerDiagram
         string result
         timestamp created_at
     }
-```
+</div> ```
 
 ## API Endpoints
 
