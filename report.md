@@ -17,44 +17,42 @@ The project follows a three-tier architecture:
 
 ```mermaid
     flowchart TD
-    %% Architecture Overview
-    subgraph Clients["🖥️ Clients"]
-        browser["🌐 Browser (HTML/CSS/JS)"]
+    %% Three-Tier Architecture with Emojis
+    classDef presentation fill:#e3f2fd,stroke:#2196f3,color:black
+    classDef application fill:#ffecb3,stroke:#ffa000,color:black
+    classDef data fill:#fce4ec,stroke:#e91e63,color:black
+
+    subgraph Presentation["🖥️ Presentation Tier"]
+        Browser["🌐 Browser"]
+        Mobile["📱 Mobile App"]
+        Desktop["💻 Desktop App"]
     end
 
-    subgraph Presentation["🖼️ Presentation Layer"]
-        ui["🖌️ UI Components"]
-        auth["🔒 Auth Forms"]
-        calc["🧮 Calculator"]
-        history["📜 History Panel"]
+    subgraph Application["⚙️ Application Tier"]
+        API["🚪 API Gateway"]
+        Auth["🔐 Auth Service"]
+        Calc["🧮 Calculator"]
+        History["📜 History"]
     end
 
-    subgraph Application["⚙️ Application Layer"]
-        flask["🐍 Flask Backend"]
-        auth_service["🔑 Auth Service"]
-        calc_service["➗ Calculator Service"]
-    end
-
-    subgraph Data["💾 Data Layer"]
-        postgres["🐘 PostgreSQL"]
-        users["👥 Users Table"]
-        history_db["📊 Calc History"]
+    subgraph Data["💾 Data Tier"]
+        DB["🐘 PostgreSQL"]
+        Cache["🔴 Redis"]
     end
 
     %% Connections
-    browser -->|HTTP/HTTPS| ui
-    ui --> auth & calc & history
-    auth -->|POST /login| auth_service
-    calc -->|POST /calculate| calc_service
-    history -->|GET /history| calc_service
-    auth_service -->|SQL| users
-    calc_service -->|SQL| history_db
+    Browser -->|HTTPS| API
+    Mobile -->|HTTPS| API
+    Desktop -->|HTTPS| API
+    API --> Auth
+    API --> Calc
+    API --> History
+    Auth -->|SQL| DB
+    Calc -->|SQL| DB
+    History -->|Cache| Cache
 
-    %% Styling (black text enforced)
-    style Clients fill:#e8f5e9,stroke:#4caf50,color:black
-    style Presentation fill:#e3f2fd,stroke:#2196f3,color:black
-    style Application fill:#ffecb3,stroke:#ffa000,color:black
-    style Data fill:#fce4ec,stroke:#e91e63,color:black
+    %% Apply styles
+    class Presentation,Application,Data presentation,application,data
 ```
 
 ### 2.2 Component Breakdown
