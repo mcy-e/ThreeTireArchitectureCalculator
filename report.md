@@ -39,48 +39,53 @@ The project follows a three-tier architecture:
 ### 2.2 Component Breakdown
 
 ```mermaid
-  componentDiagram
-    %% Frontend Components (Browser)
-    component "Frontend (React/Angular)" as frontend {
-        component "UI Layout" as ui
-        component "Auth Forms" as auth_forms
-        component "Basic Calculator" as basic_calc
-        component "Scientific Calculator" as sci_calc
-        component "History Panel" as history
+    flowchart TD
+    %% Frontend Components
+    subgraph frontend["Frontend (React/Angular)"]
+        ui[UI Layout]
+        auth[Auth Forms]
+        basic[Basic Calculator]
+        sci[Scientific Calculator]
+        history[History Panel]
         
-        ui --> auth_forms : Renders
-        ui --> basic_calc : Renders
-        basic_calc --> sci_calc : Extends
-        ui --> history : Renders
-    }
+        ui --> auth
+        ui --> basic
+        basic -.-> sci
+        ui --> history
+    end
 
-    %% Backend Services (Flask)
-    component "Backend (Flask)" as backend {
-        component "Authentication Service" as auth_service
-        component "Calculator Service" as calc_service
+    %% Backend Services
+    subgraph backend["Backend (Flask)"]
+        auth_service[Authentication Service]
+        calc_service[Calculator Service]
         
-        auth_service --> calc_service : JWT Validation
-    }
+        auth_service -->|JWT Validation| calc_service
+    end
 
-    %% Database Layer
-    database "PostgreSQL" as db {
-        component "Users Table" as users
-        component "Calculation History" as calc_history
-    }
+    %% Database
+    subgraph db["PostgreSQL Database"]
+        users[Users Table]
+        calc_history[Calculation History]
+    end
 
     %% Communication Paths
-    auth_forms --> auth_service : POST /login\nPOST /register
-    basic_calc --> calc_service : POST /calculate\n(expression)
-    sci_calc --> calc_service : POST /calculate\n(scientific ops)
-    history --> calc_service : GET /history
-    auth_service --> users : SELECT/INSERT\n(password_hash)
-    calc_service --> calc_history : INSERT\n(operation, result)
+    auth -->|POST /login\nPOST /register| auth_service
+    basic -->|POST /calculate\n(expression)| calc_service
+    sci -->|POST /calculate\n(scientific ops)| calc_service
+    history -->|GET /history| calc_service
+    auth_service -->|SELECT/INSERT\n(password_hash)| users
+    calc_service -->|INSERT\n(operation, result)| calc_history
 
-    note for frontend "Handles:\n- User interactions\n- State management\n- API calls"
-    note for backend "Handles:\n- Business logic\n- Data validation\n- DB communication"
-    note for db "Stores:\n- User credentials (hashed)\n- Calculation audit trail"
+    %% Notes
+    note1["Handles:\n- User interactions\n- State management\n- API calls"]:::note
+    note2["Handles:\n- Business logic\n- Data validation\n- DB communication"]:::note
+    note3["Stores:\n- User credentials (hashed)\n- Calculation audit trail"]:::note
+    
+    frontend -.- note1
+    backend -.- note2
+    db -.- note3
 
-
+    classDef note fill:#f9f9f9,stroke:#ddd,stroke-width:1px
 ```
 
 ## 3. Implementation Details
