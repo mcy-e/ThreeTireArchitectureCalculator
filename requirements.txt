@@ -1,0 +1,6 @@
+flask
+sympy
+flask-session
+bcrypt
+python-dotenv
+psycopg2-binary

@@ -1,4 +1,0 @@
-flask
-sympy
-flask-session
-bcrypt
