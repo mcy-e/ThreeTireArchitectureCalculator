@@ -174,7 +174,7 @@ The application uses PostgreSQL with structured tables for user management and c
     classDef er-relationship fill:#bbdefb,stroke:#0d47a1,color:000000
     class USERS,CALCULATION_HISTORY er-entity
     %% Relationships
-    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
+    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"}
 
 
 ```
