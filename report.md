@@ -59,7 +59,7 @@ The project follows a three-tier architecture:
         auth_service[Authentication Service]
         calc_service[Calculator Service]
         
-        auth_service -->|JWT Validation| calc_service
+        auth_service -->|JWT| calc_service
     end
 
     %% Database
@@ -69,23 +69,24 @@ The project follows a three-tier architecture:
     end
 
     %% Communication Paths
-    auth -->|POST /login\nPOST /register| auth_service
-    basic -->|POST /calculate\n(expression)| calc_service
-    sci -->|POST /calculate\n(scientific ops)| calc_service
-    history -->|GET /history| calc_service
-    auth_service -->|SELECT/INSERT\n(password_hash)| users
-    calc_service -->|INSERT\n(operation, result)| calc_history
+    auth -->|Login/Register| auth_service
+    basic -->|Basic Calc| calc_service
+    sci -->|Sci Calc| calc_service
+    history -->|Get History| calc_service
+    auth_service -->|User Data| users
+    calc_service -->|Save Results| calc_history
 
-    %% Notes
-    note1["Handles:\n- User interactions\n- State management\n- API calls"]:::note
-    note2["Handles:\n- Business logic\n- Data validation\n- DB communication"]:::note
-    note3["Stores:\n- User credentials (hashed)\n- Calculation audit trail"]:::note
+    %% Notes with black text
+    note1["<font color='black'>Handles:<br>- User interactions<br>- State management<br>- API calls</font>"]:::note
+    note2["<font color='black'>Handles:<br>- Business logic<br>- Data validation<br>- DB communication</font>"]:::note
+    note3["<font color='black'>Stores:<br>- User credentials<br>- Calculation history</font>"]:::note
     
     frontend -.- note1
     backend -.- note2
     db -.- note3
 
-    classDef note fill:#f9f9f9,stroke:#ddd,stroke-width:1px
+    classDef note fill:#f9f9f9,stroke:#ddd,stroke-width:1px,color:black
+    classDef default fill:white,color:black,stroke:black
 ```
 
 ## 3. Implementation Details
