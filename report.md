@@ -14,34 +14,34 @@ The application employs modern development practices with a clear separation of 
 The project follows a three-tier architecture:
 
 ```mermaid
-blockBeta
+ blockBeta
     columns 1
     block:Testing Pyramid
         columns 3
         block:Unit Tests::3
-            "Many small, fast tests":::blackText
-            "Isolated components":::blackText
-            "~70% coverage":::blackText
+            "Many small, fast tests":::unitText
+            "Isolated components":::unitText
+            "~70% coverage":::unitText
         space
         block:Integration Tests::2
-            "Medium scope":::blackText
-            "Service interactions":::blackText
-            "~20% coverage":::blackText
+            "Medium scope":::integrationText
+            "Service interactions":::integrationText
+            "~20% coverage":::integrationText
         space
         block:End-to-End (E2E) Tests::1
-            "Few, slow tests":::blackText
-            "Full user flows":::blackText
-            "~10% coverage":::blackText
+            "Few, slow tests":::e2eText
+            "Full user flows":::e2eText
+            "~10% coverage":::e2eText
 
-    classDef blackText fill:#ffcccb,stroke:#333,color:black  // For E2E (red)
-    classDef blackText fill:#add8e6,stroke:#333,color:black  // For Unit (blue)
-    classDef blackText fill:#90ee90,stroke:#333,color:black  // For Integration (green)
+    classDef unitText fill:#add8e6,stroke:#333,color:black
+    classDef integrationText fill:#90ee90,stroke:#333,color:black
+    classDef e2eText fill:#ffcccb,stroke:#333,color:black
 ```
 
 ### 2.2 Component Breakdown
 
 ```mermaid
-componentDiagram
+  componentDiagram
     %% Frontend Components (Browser)
     component "Frontend (React/Angular)" as frontend {
         component "UI Layout" as ui
@@ -142,7 +142,7 @@ def calculate_integral(expr_str):
 The application uses PostgreSQL with structured tables for user management and calculation history:
 
 ```mermaid
-erDiagram
+ erDiagram
     USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
     USERS {
         bigint id PK "Serial"
@@ -316,7 +316,7 @@ The system maintains a record of user calculations:
 ## 6. Testing Strategy
 
 ```mermaid
-blockBeta
+  blockBeta
     columns 1
     block:Testing Pyramid
         columns 3
@@ -386,9 +386,6 @@ The application is designed for deployment on various platforms:
     %% Notes (optional)
     note right of flask: Hosts the Flask app\nand serves static content
     note left of postgres: Stores application data\nand handles transactions
-
-
-
 ```
 
 ### 7.1 Deployment Options
