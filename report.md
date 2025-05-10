@@ -145,9 +145,9 @@ def calculate_integral(expr_str):
 
 The application uses PostgreSQL with structured tables for user management and calculation history:
 
-```mermaid
- erDiagram
-    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
+```mermaid  
+    erDiagram
+    %% Entities
     USERS {
         bigint id PK "Serial"
         varchar username "NOT NULL, Unique"
@@ -158,25 +158,23 @@ The application uses PostgreSQL with structured tables for user management and c
     CALCULATION_HISTORY {
         bigint id PK "Serial"
         bigint user_id FK "REFERENCES USERS(id)"
-        varchar operation "NOT NULL (e.g., 'addition')"
-        text expression "NOT NULL (e.g., '2+2')"
+        varchar operation "NOT NULL"
+        text expression "NOT NULL"
         numeric result "NOT NULL"
         timestamp created_at "NOT NULL, DEFAULT NOW()"
     }
 
-    note right of USERS
-        **Users Table**:
-        - Primary Key: id (auto-increment)
-        - username must be unique
-        - Password stored as hash
-    end note
+    
+    %% Notes (GitHub-compatible format)
+    USERS : "Users Table\n- PK: auto-increment id\n- Unique username\n- Hashed passwords"
+    CALCULATION_HISTORY : "History Table\n- FK: user_id→USERS.id\n- Stores all operations\n- Timestamped records"
 
-    note left of CALCULATION_HISTORY
-        **History Table**:
-        - Foreign Key: user_id → USERS.id
-        - Stores all calculation operations
-        - Includes timestamps for auditing
-    end note
+    %% Styling (forces black text)
+    classDef er-entity fill:#e3f2fd,stroke:#1976d2,color:000000
+    classDef er-relationship fill:#bbdefb,stroke:#0d47a1,color:000000
+    class USERS,CALCULATION_HISTORY er-entity
+    %% Relationships
+    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
 
 
 ```
