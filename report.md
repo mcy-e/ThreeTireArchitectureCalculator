@@ -5,7 +5,9 @@
 
 This project implements a full-stack web application that provides an advanced scientific calculator with user authentication and calculation history tracking. The calculator supports basic arithmetic operations as well as complex mathematical functions including derivatives, integrals, limits, and equation solving through an intuitive user interface.
 
-The application employs modern development practices with a clear separation of concerns, secure user authentication, and a responsive design that works across different devices. The solution demonstrates integration between frontend web technologies and a Python-based backend with a PostgreSQL database.
+The application employs modern development practices with a clear separation of concerns, secure user authentication, and a responsive design that works across different devices. This solution demonstrates integration between frontend web technologies and a Python-based backend with a PostgreSQL database.
+
+
 
 ## 2. System Architecture
 
