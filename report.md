@@ -147,35 +147,21 @@ The application uses PostgreSQL with structured tables for user management and c
 
 ```mermaid  
     erDiagram
-    %% Entities
+    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"
     USERS {
-        bigint id PK "Serial"
-        varchar username "NOT NULL, Unique"
-        varchar password_hash "NOT NULL"
-        timestamp created_at "NOT NULL, DEFAULT NOW()"
+        bigint id PK
+        varchar username
+        varchar password_hash
+        timestamp created_at
     }
-
     CALCULATION_HISTORY {
-        bigint id PK "Serial"
-        bigint user_id FK "REFERENCES USERS(id)"
-        varchar operation "NOT NULL"
-        text expression "NOT NULL"
-        numeric result "NOT NULL"
-        timestamp created_at "NOT NULL, DEFAULT NOW()"
+        bigint id PK
+        bigint user_id FK
+        varchar operation
+        text expression
+        numeric result
+        timestamp created_at
     }
-
-    
-    %% Notes (GitHub-compatible format)
-    USERS : "Users Table\n- PK: auto-increment id\n- Unique username\n- Hashed passwords"
-    CALCULATION_HISTORY : "History Table\n- FK: user_id→USERS.id\n- Stores all operations\n- Timestamped records"
-
-    %% Styling (forces black text)
-    classDef er-entity fill:#e3f2fd,stroke:#1976d2,color:000000
-    classDef er-relationship fill:#bbdefb,stroke:#0d47a1,color:000000
-    class USERS,CALCULATION_HISTORY er-entity
-    %% Relationships
-    USERS ||--o{ CALCULATION_HISTORY : "1-to-many"}
-
 
 ```
 
