@@ -61,7 +61,7 @@ graph TD
 
 ## Screenshots
 
-### ______<span style="font-size: 30px;">I</span>- Login page______
+### ______**I-Login page______
 
 ![Login Screen](Assets/login.png)
 
