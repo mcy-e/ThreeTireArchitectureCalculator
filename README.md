@@ -61,17 +61,15 @@ graph TD
 
 ## Screenshots
 
-```
-[SCREENSHOT PLACEHOLDER - Login Screen]
-```
+![Login Screen](Assets/login.png)
 
-```
-[SCREENSHOT PLACEHOLDER - Calculator Interface]
-```
 
-```
-[SCREENSHOT PLACEHOLDER - History Panel]
-```
+
+![Calculator Interface](Assets/Calculators.xcf)
+
+
+
+![ History Panel](Assets/history.xcf)
 
 ## Setup Instructions
 
