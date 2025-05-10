@@ -328,35 +328,40 @@ The system maintains a record of user calculations:
 The application is designed for deployment on various platforms:
 
 ```mermaid
-    
-    graph TD
-
-    %% Deployment Architecture for Flask Application
-
-    %% Define nodes (servers/clients)
-    subgraph WebServer
-        flask[Flask App]
+    flowchart TD
+    %% Deployment Architecture
+    subgraph Web_Server["🌐 Web Server"]
+        flask["🐍 Flask Application"]
     end
 
-    subgraph DatabaseServer
-        postgres[PostgreSQL]
+    subgraph Database_Server["💾 Database Server"]
+        postgres["🐘 PostgreSQL"]
     end
 
-    subgraph ClientBrowsers
-        chrome[Chrome]
-        firefox[Firefox]
-        safari[Safari]
+    subgraph Clients["🖥️ Client Browsers"]
+        browser1["🟦 Chrome"]
+        browser2["🟧 Firefox"]
+        browser3["🟪 Safari"]
     end
 
     %% Connections
-    chrome -- HTTP/HTTPS --> flask
-    firefox -- HTTP/HTTPS --> flask
-    safari -- HTTP/HTTPS --> flask
-    flask -- SQL --> postgres
+    browser1 -->|HTTP/HTTPS| flask
+    browser2 -->|HTTP/HTTPS| flask
+    browser3 -->|HTTP/HTTPS| flask
+    flask -->|SQL Port 5432| postgres
 
-    %% Notes (optional)
-    note right of flask: Hosts the Flask app\nand serves static content
-    note left of postgres: Stores application data\nand handles transactions
+    %% Notes
+    flask-.->note1["📌 Hosts Flask app<br>📌 Serves static content"]
+    postgres-.->note2["💽 Stores application data<br>💽 Handles transactions"]
+
+    %% Styling (black text enforced)
+    style Web_Server fill:#e3f2fd,stroke:#2196f3,color:black
+    style Database_Server fill:#fce4ec,stroke:#e91e63,color:black
+    style Clients fill:#e8f5e9,stroke:#4caf50,color:black
+    style note1 fill:#f5f5f5,stroke:#ddd,color:black
+    style note2 fill:#f5f5f5,stroke:#ddd,color:black
+    style flask fill:#ffffff,stroke:#333,color:black
+    style postgres fill:#ffffff,stroke:#333,color:black
 ```
 
 ### 7.1 Deployment Options
