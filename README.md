@@ -61,18 +61,18 @@ graph TD
 
 ## Screenshots
 
-### __**I-Login page__
+### __- Login page__
 
 ![Login Screen](Assets/login.png)
 
-### __**II- Basic Calculator__
+### __- Basic Calculator__
    
 ![Calculator Interface](Assets/calc.png)
 
     
 To see the scientific clculator you must check the website 👀
 
-### __**III- History Panel__
+### __- History Panel__
 
 ![ History Panel](Assets/history.png)
 
