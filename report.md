@@ -41,9 +41,9 @@ The project follows a three-tier architecture:
     end
 
     %% Connections
-    Browser -->|HTTPS| API
-    Mobile -->|HTTPS| API
-    Desktop -->|HTTPS| API
+    Browser -->|HTTP| API
+    Mobile -->|HTTP| API
+    Desktop -->|HTTP| API
     API --> Auth
     API --> Calc
     API --> History
