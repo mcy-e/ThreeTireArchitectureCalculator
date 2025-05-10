@@ -65,11 +65,11 @@ graph TD
 
 
 
-![Calculator Interface](Assets/Calculators.xcf)
+![Calculator Interface](Assets/calc.png)
 
 
 
-![ History Panel](Assets/history.xcf)
+![ History Panel](Assets/history.png)
 
 ## Setup Instructions
 
