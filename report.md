@@ -16,28 +16,24 @@ The application employs modern development practices with a clear separation of 
 The project follows a three-tier architecture:
 
 ```mermaid
- blockBeta
-    columns 1
-    block:Testing Pyramid
-        columns 3
-        block:Unit Tests::3
-            "Many small, fast tests":::unitText
-            "Isolated components":::unitText
-            "~70% coverage":::unitText
-        space
-        block:Integration Tests::2
-            "Medium scope":::integrationText
-            "Service interactions":::integrationText
-            "~20% coverage":::integrationText
-        space
-        block:End-to-End (E2E) Tests::1
-            "Few, slow tests":::e2eText
-            "Full user flows":::e2eText
-            "~10% coverage":::e2eText
+    %%{init: {'themeVariables': {'nodeTextColor':'black'}, 'themeConfig': {'nodeTextColor':'black'}}}%%
+    flowchart TD
+    classDef unit fill:#add8e6,stroke:#333,color:black
+    classDef integration fill:#90ee90,stroke:#333,color:black
+    classDef e2e fill:#ffcccb,stroke:#333,color:black
 
-    classDef unitText fill:#add8e6,stroke:#333,color:black
-    classDef integrationText fill:#90ee90,stroke:#333,color:black
-    classDef e2eText fill:#ffcccb,stroke:#333,color:black
+    %% Pyramid Structure
+    e2e["<b>End-to-End Tests</b><br>• Few, slow tests<br>• Full user flows<br>• ~10% coverage"]:::e2e
+    integration["<b>Integration Tests</b><br>• Medium scope<br>• Service interactions<br>• ~20% coverage"]:::integration
+    unit["<b>Unit Tests</b><br>• Many small, fast tests<br>• Isolated components<br>• ~70% coverage"]:::unit
+
+    %% Pyramid Connections
+    unit --> integration
+    integration --> e2e
+
+    %% Hide direction arrows
+    linkStyle 0 stroke-width:0px;
+    linkStyle 1 stroke-width:0px;
 ```
 
 ### 2.2 Component Breakdown
