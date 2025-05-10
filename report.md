@@ -16,6 +16,45 @@ The application employs modern development practices with a clear separation of 
 The project follows a three-tier architecture:
 
 ```mermaid
+    flowchart TD
+    %% Architecture Overview
+    subgraph Clients["🖥️ Clients"]
+        browser["🌐 Browser (HTML/CSS/JS)"]
+    end
+
+    subgraph Presentation["🖼️ Presentation Layer"]
+        ui["🖌️ UI Components"]
+        auth["🔒 Auth Forms"]
+        calc["🧮 Calculator"]
+        history["📜 History Panel"]
+    end
+
+    subgraph Application["⚙️ Application Layer"]
+        flask["🐍 Flask Backend"]
+        auth_service["🔑 Auth Service"]
+        calc_service["➗ Calculator Service"]
+    end
+
+    subgraph Data["💾 Data Layer"]
+        postgres["🐘 PostgreSQL"]
+        users["👥 Users Table"]
+        history_db["📊 Calc History"]
+    end
+
+    %% Connections
+    browser -->|HTTP/HTTPS| ui
+    ui --> auth & calc & history
+    auth -->|POST /login| auth_service
+    calc -->|POST /calculate| calc_service
+    history -->|GET /history| calc_service
+    auth_service -->|SQL| users
+    calc_service -->|SQL| history_db
+
+    %% Styling (black text enforced)
+    style Clients fill:#e8f5e9,stroke:#4caf50,color:black
+    style Presentation fill:#e3f2fd,stroke:#2196f3,color:black
+    style Application fill:#ffecb3,stroke:#ffa000,color:black
+    style Data fill:#fce4ec,stroke:#e91e63,color:black
 ```
 
 ### 2.2 Component Breakdown
