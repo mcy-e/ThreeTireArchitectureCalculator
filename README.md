@@ -61,17 +61,18 @@ graph TD
 
 ## Screenshots
 
-### I- Login page
+### ______<span style="font-size: 30px;">I</span>- Login page______
 
 ![Login Screen](Assets/login.png)
 
-### II- Basic Calculator
+### ______**II- Basic Calculator______
    
 ![Calculator Interface](Assets/calc.png)
 
-    To see the scientific clculator you must check the website 👀
+    
+To see the scientific clculator you must check the website 👀
 
-### III- History Panel
+### ______**III- History Panel______
 
 ![ History Panel](Assets/history.png)
 
